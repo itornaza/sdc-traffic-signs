@@ -92,9 +92,9 @@ To train the model, I used the Tensorflow adamOptimizer, after doing some experi
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of **0.999**
-* validation set accuracy of **0.969**  
-* test set accuracy of **0.940**
+* training set accuracy of 0.999
+* validation set accuracy of 0.969  
+* test set accuracy of 0.940
 
 An iterative approach was chosen:
 * The first architecture that has been tested was the LeNet-5 architecture.
@@ -112,7 +112,8 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-**The second image might be difficult to classify because ???**
+The stop sign should be the easiest to classify since it has a unique outer shape, that of a hexagon. The same is expected for the priority road sign that has the outer shape of a rhombus.
+The 60 Km/hr speed limit although it has the common circle shape has the 6 as a unique number, it is expected to be a little more difficult to classify than the two previous signs. The no passing sign is expected to be more difficult as the grayscale conversion might confuse the classifier with other traffic signs such as clear to pass. The general caution sign is expected to be easily classified since it is has both a trianglar shape and a semicolon that easily stands out. 
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -127,11 +128,11 @@ Here are the results of the prediction:
 | General caution       | General caution								|
 
 
-The model was able to correctly guess 5 out of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of **0.94**
+The model was able to correctly guess 5 out of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 0.94
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 14, 15, and 16 cells of the Ipython notebook.
+The code for making predictions on my final model is located in the 15, 16, and 17 cells of the Ipython notebook.
 
 For the first, second, third, and fifth image, the model is almost certain sure aboout the corresponding sign (probabilities of 0.985 to 0.999). The top five soft max probabilities were
 
@@ -143,7 +144,7 @@ For the first, second, third, and fifth image, the model is almost certain sure 
 | .717                  | No passing                                    |
 | .998                  | General caution								|
 
-For the forth image the softmax probability is 0.717 which is far less than the other four. This is because the image capture is possibly more blur than the others and contain less information about the car shapes.
+For the forth image the softmax probability is 0.717 which is far less than the other four. In  addition to the previously mentioned reasons, this is because the image capture is possibly more blur than the others and contain less information about the car shapes.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
