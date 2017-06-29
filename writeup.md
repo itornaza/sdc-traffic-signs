@@ -72,7 +72,7 @@ My final model consisted of the following layers based on the Lenet-5 standard m
 | Convolution           | 1x1 stride, valid padding, outputs 28x28x6 	|
 | ReLU					|                                               |
 | Max pooling	      	| 2x2 stride, valid padding, outputs 14x14x6    |
-| Convolution 3x3	    | 1x1 stride, valid padding, output 10x10x16	|
+| Convolution           | 1x1 stride, valid padding, output 10x10x16	|
 | ReLU                  |                                               |
 | Max pooling           | 2x2 stride, valid padding, outputs 5x5x16     |
 | Flatten               | Outputs 400      								|	
@@ -87,7 +87,7 @@ My final model consisted of the following layers based on the Lenet-5 standard m
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used the Tensorflow adamOptimizer, after doing some experiments with the adagardOptimizer as well. I have trained the network on my mac book pro 2,5 GHz Intel Core i7 processor and took approximatelly 5.3 minutes. I used a batch size of 128 since I did not encounter any delays from my cpu. I trained the network for 30 epochs with a learning rate of 0.00098 to minimize overfitting once again.
+To train the model, I used the Tensorflow adamOptimizer, after doing some experiments with the adagardOptimizer as well. I have trained the network on my mac book pro 2,5 GHz Intel Core i7 processor and took approximatelly 5.4 minutes. I used a batch size of 128 since I did not encounter any delays from my cpu. I trained the network for 30 epochs with a learning rate of 0.000989 to minimize overfitting once again.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
