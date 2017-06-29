@@ -49,13 +49,13 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because we ca get their classification by only looking at their shapes. The validation accuracy improved by 0.03 using the Lenet-5 model.
+As a first step, I decided to convert the images to grayscale because we can get their classification by only looking at their shapes. The validation accuracy improved by 0.03 using the Lenet-5 model with only adding grayscale preprocessing.
 
-As a following step I applied histogram equalization to better distribute the pixel color values through out the [0, 255] range. The validation accuracy improved by another 0.025 using the Lenet-5 model.
+As a following step I applied histogram equalization to better distribute the pixel color values through out the [0, 255] range. The validation accuracy improved by another 0.025 using the Lenet-5 standard  model.
 
-As a last step, I normalized the image data because it is a good technique to have zero variance and zero mean. I have chosen to normalize the grayscale channel values from [0, 255] to [-0.5, 0.5]. This added to the validation accuracy by another 0.05 and was most contributing preprocessing step to the network improvement.
+As a last step, I normalized the image data because it is a good technique to have zero variance and zero mean. I have chosen to normalize the grayscale channel values from [0, 255] to [-0.5, 0.5]. This added to the validation accuracy by another 0.05 and was the most contributing preprocessing step to the network prediction accuracy improvement.
 
-After all the preprocessing steps the validation accuracy of the unmodified Lenet-5 model jumped from 0.83 to 0.932.
+After all applying all the preprocessing steps and without any change in the standard Lenet-5 model, the validation accuracy jumped from 0.83 to 0.932, i.e. by a factor of 0.1!
 
 Here is an example of a traffic sign image before and after preprocessing
 
@@ -64,7 +64,7 @@ Here is an example of a traffic sign image before and after preprocessing
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-My final model consisted of the following layers based on the lenet 5 model. My modification is the addition of dropout layers after the activation functions of the fully connected layers. 
+My final model consisted of the following layers based on the Lenet-5 standard model. My modification is the addition of dropout layers after the activation functions of the fully connected layers. 
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -87,20 +87,20 @@ My final model consisted of the following layers based on the lenet 5 model. My 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used the Tensorflow adamOptimizer. I have trained the network on my mac book pro 2,5 GHz Intel Core i7 processor and took approximatelly 6.034 minutes. I used a batch size of 128 since I did not encounter any delays from my cpu. I trained the network for 30 epochs with a learning rate of 0.001
+To train the model, I used the Tensorflow adamOptimizer, after doing some experiments with the adagardOptimizer as well. I have trained the network on my mac book pro 2,5 GHz Intel Core i7 processor and took approximatelly 5.3 minutes. I used a batch size of 128 since I did not encounter any delays from my cpu. I trained the network for 30 epochs with a learning rate of 0.00098 to minimize overfitting once again.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.998
-* validation set accuracy of 0.954  
-* test set accuracy of 0.940
+* training set accuracy of **0.999**
+* validation set accuracy of **0.969**  
+* test set accuracy of **0.940**
 
 An iterative approach was chosen:
 * The first architecture that has been tested was the LeNet-5 architecture.
 * The problem with this architecture was that the max validation accuracy was 0.93.
-* The architecture was adjusted so a dropout layer was added after the activations of the first and second fullt connected layers in order to reduce the overfitting issue.
-* The keep probability of the dropout layers was tested for settings varying from 0.5 to 0.7, and a design decision was made to go with a keep probability of 0.65 that achieved the best validation accuracy from the other values. The dropout layers increased the validation accuracy by 0.01.
+* The architecture was adjusted so a dropout layer was added after the activations of the first and second fully connected layers in order to reduce the overfitting issue.
+* The *keep probability* of the dropout layers was tested for settings varying from 0.5 to 0.7, and a design decision was made to go with a keep probability of 0.65 that achieved the best validation accuracy from the other values. The dropout layers increased the validation accuracy by a factor of 0.01.
 * The final model's accuracy on the training, validation and test set provide evidence that the model is working well above the 0.93 project requirement.
  
 ### Test a Model on New Images
@@ -112,7 +112,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The second image might be difficult to classify because the color contrast between the white, gray and yellow areas is not so grate when converting to grayscale.
+**The second image might be difficult to classify because ???**
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -120,31 +120,30 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| Priority road         | Priority road									|
-| General caution       | General caution								|
+| Stop Sign      		| Stop sign   									|
 | Speed limit 60 km/h	| Speed limit 60 km/h			 				|
+| Priority road         | Priority road									|
 | No passing			| No passing                                    |
+| General caution       | General caution								|
 
 
-The model was able to correctly guess 5 out of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 0.94
+The model was able to correctly guess 5 out of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of **0.94**
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 14, 15, and 16 cells of the Ipython notebook.
 
-For the first, third, forth and fifth image, the model is definately sure that this is a stop sign (probabilities of 0.998 to 0.999), and the image does contain a stop sign. The top five soft max probabilities were
+For the first, second, third, and fifth image, the model is almost certain sure aboout the corresponding sign (probabilities of 0.985 to 0.999). The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .998         			| Stop sign   									| 
-| .744     				| Priority road  								|
-| .999					| General caution								|
-| .999	      			| Speed limit 60 km/h			 				|
-| .999				    | No passing                                    |
+| .999         			| Stop sign   									| 
+| .985                  | Speed limit 60 km/h			 				|
+| .999     				| Priority road  								|
+| .717                  | No passing                                    |
+| .998                  | General caution								|
 
-
-For the second image the softmax probability is 0.744 which is far less than the other four.
+For the forth image the softmax probability is 0.717 which is far less than the other four. This is because the image capture is possibly more blur than the others and contain less information about the car shapes.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
