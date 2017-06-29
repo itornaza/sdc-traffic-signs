@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/visualize_dataset.png "Visualization"
-[image2]: ./examples/before_preprocessing.png "Before preprocessing"
+[image2]: ./examples/before_preprpocessing.png "Before preprocessing"
 [image3]: ./examples/after_preprocessing.png "After preprocessing"
 [image4]: ./traffic-signs-web/tf-1.jpeg "Traffic Sign 1"
 [image5]: ./traffic-signs-web/tf-2.jpeg "Traffic Sign 2"
