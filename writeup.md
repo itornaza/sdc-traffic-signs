@@ -15,8 +15,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/visualize_dataset.png "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
+[image2]: ./examples/before_preprocessing.png "Before preprocessing"
+[image3]: ./examples/after_preprocessing.png "After preprocessing"
 [image4]: ./traffic-signs-web/tf-1.jpeg "Traffic Sign 1"
 [image5]: ./traffic-signs-web/tf-2.jpeg "Traffic Sign 2"
 [image6]: ./traffic-signs-web/tf-3.jpeg "Traffic Sign 3"
@@ -60,6 +60,7 @@ After all the preprocessing steps the validation accuracy of the unmodified Lene
 Here is an example of a traffic sign image before and after preprocessing
 
 ![alt text][image2]
+![alt text][image3]
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
