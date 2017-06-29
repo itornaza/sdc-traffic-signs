@@ -92,16 +92,16 @@ To train the model, I used the Tensorflow adamOptimizer, after doing some experi
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.999
-* validation set accuracy of 0.969  
-* test set accuracy of 0.940
+* training set accuracy of 0.997
+* validation set accuracy of 0.962  
+* test set accuracy of 0.935
 
 An iterative approach was chosen:
 * The first architecture that has been tested was the LeNet-5 architecture.
 * The problem with this architecture was that the max validation accuracy was 0.93.
 * The architecture was adjusted so a dropout layer was added after the activations of the first and second fully connected layers in order to reduce the overfitting issue.
 * The *keep probability* of the dropout layers was tested for settings varying from 0.5 to 0.7, and a design decision was made to go with a keep probability of 0.65 that achieved the best validation accuracy from the other values. The dropout layers increased the validation accuracy by a factor of 0.01.
-* The final model's accuracy on the training, validation and test set provide evidence that the model is working well above the 0.93 project requirement.
+* The final model's accuracy on the training, validation and test set provide evidence that the model is working above the 0.93 project requirement.
  
 ### Test a Model on New Images
 
@@ -128,23 +128,21 @@ Here are the results of the prediction:
 | General caution       | General caution								|
 
 
-The model was able to correctly guess 5 out of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 0.94
+The model was able to correctly guess 5 out of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 0.935
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 15, 16, and 17 cells of the Ipython notebook.
 
-For the first, second, third, and fifth image, the model is almost certain sure aboout the corresponding sign (probabilities of 0.985 to 0.999). The top five soft max probabilities were
+For all the images, the model is almost certain sure aboout the corresponding sign (probabilities of 0.996 to 0.999). The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .999         			| Stop sign   									| 
-| .985                  | Speed limit 60 km/h			 				|
+| .996                  | Speed limit 60 km/h			 				|
 | .999     				| Priority road  								|
-| .717                  | No passing                                    |
-| .998                  | General caution								|
-
-For the forth image the softmax probability is 0.717 which is far less than the other four. In  addition to the previously mentioned reasons, this is because the image capture is possibly more blur than the others and contain less information about the car shapes.
+| .999                  | No passing                                    |
+| .999                  | General caution								|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
