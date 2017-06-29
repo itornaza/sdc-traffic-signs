@@ -17,11 +17,11 @@ The goals / steps of this project are the following:
 [image1]: ./examples/visualization.jpg "Visualization"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: ./traffic-signs-web/tf-1.jpeg "Traffic Sign 1"
+[image5]: ./traffic-signs-web/tf-2.jpeg "Traffic Sign 2"
+[image6]: ./traffic-signs-web/tf-3.jpeg "Traffic Sign 3"
+[image7]: ./traffic-signs-web/tf-4.jpeg "Traffic Sign 4"
+[image8]: ./traffic-signs-web/tf-5.jpeg "Traffic Sign 5"
 
 ---
 ### Writeup / README
@@ -49,11 +49,13 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because we ca get their classification by only looking at their shapes
+As a first step, I decided to convert the images to grayscale because we ca get their classification by only looking at their shapes. The validation accuracy improved by 0.03 using the Lenet-5 model.
 
-As a following step I applied histogram equalization to better distribute the pixel color values through out the [0, 255] range.
+As a following step I applied histogram equalization to better distribute the pixel color values through out the [0, 255] range. The validation accuracy improved by another 0.025 using the Lenet-5 model.
 
-As a last step, I normalized the image data because it is a good technique to have zero variance and zero mean. I have chosen to normalize the grayscale channel values from [0, 255] to [-0.5, 0.5]
+As a last step, I normalized the image data because it is a good technique to have zero variance and zero mean. I have chosen to normalize the grayscale channel values from [0, 255] to [-0.5, 0.5]. This added to the validation accuracy by another 0.05 and was most contributing preprocessing step to the network improvement.
+
+After all the preprocessing steps the validation accuracy of the unmodified Lenet-5 model jumped from 0.83 to 0.932.
 
 Here is an example of a traffic sign image before and after preprocessing
 
@@ -97,7 +99,7 @@ An iterative approach was chosen:
 * The first architecture that has been tested was the LeNet-5 architecture.
 * The problem with this architecture was that the max validation accuracy was 0.93.
 * The architecture was adjusted so a dropout layer was added after the activations of the first and second fullt connected layers in order to reduce the overfitting issue.
-* The keep probability of the dropout layers was tested for settings varying from 0.5 to 0.7, and a design decision was made to go with a keep probability of 0.65 that achieved the best validation accuracy from the other values.
+* The keep probability of the dropout layers was tested for settings varying from 0.5 to 0.7, and a design decision was made to go with a keep probability of 0.65 that achieved the best validation accuracy from the other values. The dropout layers increased the validation accuracy by 0.01.
 * The final model's accuracy on the training, validation and test set provide evidence that the model is working well above the 0.93 project requirement.
  
 ### Test a Model on New Images
